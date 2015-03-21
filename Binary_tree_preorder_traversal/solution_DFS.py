@@ -7,31 +7,26 @@
 
 class Solution:
     # @param root, a tree node
-    # @return an integer
-    def maxDepth(self, root):
-        #postorder traversal, when stack top is a leafnode, 
-        #the stack represents a way from this leaf to root
+    # @return a list of integers
+    def preorderTraversal(self, root):
+        #iteration, using DFS
         stack = []
+        l = []
         visited = None
         cur = root
-        max_depth = 0
         while cur is not None or len(stack)!=0:
             while cur is not None:
                 stack.append(cur)
+                l.append(cur.val)
                 cur = cur.left
-            cur = stack.pop()
-            stack.append(cur)
-            #when stack top is a leafnode
-            #depth==length of the stack
-            if cur.left is None and cur.right is None:
-                if max_depth<(len(stack)):
-                    max_depth = len(stack)
-            if cur.right is not None and cur.right is not visited:
+            cur = stack[-1]
+            if cur.right is not None and cur.right != visited:
                 cur = cur.right
             else:
                 stack.pop()
                 visited = cur
                 cur = None
-        return max_depth
+        return l
             
+                    
         

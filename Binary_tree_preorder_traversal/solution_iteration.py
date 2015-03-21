@@ -9,17 +9,17 @@ class Solution:
     # @param root, a tree node
     # @return a list of integers
     def preorderTraversal(self, root):
-        #iteration, using stack
+        #iteration, using stack(push right nodes)
         stack = []
         l = []
         cur = root
-        while cur is not None or len(stack)!=0:
-            if cur is not None:
+        while cur or stack:
+            while cur:
                 l.append(cur.val);
-                if cur.right is not None:
+                if cur.right:
                     stack.append(cur.right)
                 cur = cur.left
-            else:
+            if stack:
                 cur = stack.pop()
         return l
         

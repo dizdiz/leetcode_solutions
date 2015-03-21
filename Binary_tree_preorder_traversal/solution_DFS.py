@@ -9,7 +9,7 @@ class Solution:
     # @param root, a tree node
     # @return a list of integers
     def preorderTraversal(self, root):
-        #iteration, using DFS
+        #iteration, using DFS(push whatever encountered into stack)
         stack = []
         l = []
         visited = None
@@ -19,13 +19,8 @@ class Solution:
                 stack.append(cur)
                 l.append(cur.val)
                 cur = cur.left
-            cur = stack[-1]
-            if cur.right is not None and cur.right != visited:
-                cur = cur.right
-            else:
-                stack.pop()
-                visited = cur
-                cur = None
+            cur = stack.pop()
+            cur = cur.right
         return l
             
                     

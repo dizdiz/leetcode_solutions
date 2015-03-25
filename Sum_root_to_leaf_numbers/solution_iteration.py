@@ -16,7 +16,7 @@ class Solution:
         temp = 0
         visited = None
         cur = root
-        #postorder traversal, 
+        #DFS traversal, 
         #when there's a leafnode, the stack has the way this node to root
         while cur or stack:
             while cur is not None:
@@ -24,9 +24,11 @@ class Solution:
                 temp = temp*10 + cur.val
                 cur = cur.left
             cur = stack[-1]
+            
             #if cur is a leafnode, push the sum into stack
             if cur.left is None and cur.right is None:
                 results.append(temp)
+            
             if cur.right and cur.right is not visited:
                 cur = cur.right
             else:

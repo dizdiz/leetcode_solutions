@@ -13,9 +13,7 @@ class Solution:
         l = []
         if root is None: return l
         l.append(root.val)
-        l1 = self.preorderTraversal(root.left)
-        l2 = self.preorderTraversal(root.right)
-        l.extend(l1)
-        l.extend(l2)
+        l.extend(self.preorderTraversal(root.left))
+        l.extend(self.preorderTraversal(root.right))
         return l
         

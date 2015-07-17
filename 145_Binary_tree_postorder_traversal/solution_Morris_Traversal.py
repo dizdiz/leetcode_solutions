@@ -15,13 +15,11 @@ class Solution:
             return
         x = start
         y = start.right
-        while True:
+        while x is not end:
             z = y.right
             y.right = x
             x = y
             y = z
-            if x==end:
-                break
         return
 
     def postorderTraversal(self, root):
@@ -52,14 +50,10 @@ class Solution:
                     #reversing output
                     self.reorder(start, end)
                     p = end
-                    while True:
-                        if p is None:
-                            break
-                        if p is start:
-                            l.append(p.val)
-                            break
+                    while p is not start:
                         l.append(p.val)
                         p = p.right
+                    l.append(start.val)
                     #reverse back, keep the tree unchanged   
                     self.reorder(end, start)
                     #un-thread pre, cur goes to right child

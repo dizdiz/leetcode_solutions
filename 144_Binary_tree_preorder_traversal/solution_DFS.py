@@ -12,7 +12,6 @@ class Solution:
         #iteration, using DFS(push whatever encountered into stack)
         stack = []
         l = []
-        visited = None
         cur = root
         while cur is not None or len(stack)!=0:
             while cur is not None:
